@@ -1,0 +1,44 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*.local
+
+# Logs
+logs
+*.log
+*.log.*
+pids
+*.pid
+*.pid.lock
+
+# Runtime data
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+.cache/
+out/
+
+# PM2 logs and process files
+pm2-log.log
+*.pid
+*.json
