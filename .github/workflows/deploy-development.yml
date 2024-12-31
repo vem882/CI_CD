@@ -22,7 +22,7 @@ jobs:
       - name: Deploy to Development
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.DEV_SERVER_USER }}@${{ secrets.DEV_SERVER_IP }} << 'EOF'
-            cd /opt/developer || exit
+            cd /opt/development || exit
             git init
             git remote add origin git@github.com:vem882/CI_CD.git || true
             git fetch origin dev
