@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to development server
+      - name: dev-oracle
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.DEV_SERVER_IP }}
