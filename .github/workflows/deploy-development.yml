@@ -28,5 +28,7 @@ jobs:
             git fetch origin dev
             git reset --hard origin/dev
             npm install
-            node app.js
+            npm install express axios pm2
+            pm2 restart all
+            pm2 app.js
           EOF
