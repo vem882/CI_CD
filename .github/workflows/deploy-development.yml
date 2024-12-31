@@ -13,14 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: dev-oracle
-        uses: appleboy/ssh-action@v0.1.5
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
         with:
-          host: ${{ secrets.DEV_SERVER_IP }}
-          username: ${{ secrets.DEV_SERVER_USER }}
-          key: ${{ secrets.DEV_SERVER_SSH_KEY }}
-          script: |
-            cd /opt/development
-            git pull origin dev
-            npm install
+          ssh-private-key: ${{ secrets.DEV_SERVER_SSH_KEY }}
+
+      # 3. Deploy to server
+      - name: Deploy to Development
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.DEV_SERVER_USER }}@${{ secrets.DEV_SERVER_IP }} << 'EOF'
+            cd /opt/developer || exit
+            git init
+            git remote add origin git@github.com:vem882/CI_CD.git || true
+            git fetch origin dev
+            git reset --hard origin/dev
             node app.js
+          EOF
