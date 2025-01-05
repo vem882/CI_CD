@@ -28,5 +28,4 @@ jobs:
             git fetch origin dev
             git reset --hard origin/dev
             pm2 restart backend
-            pm2 start app.js --name "backend"
           EOF
