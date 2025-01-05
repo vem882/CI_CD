@@ -15,9 +15,11 @@ const checkSiteStatus = async () => {
   try {
     const response = await axios.get(siteStatus.url);
     siteStatus.isOnline = response.status === 200;
+    console.log(`SiteStatus 200`);
     siteStatus.lastChecked = new Date().toISOString();
   } catch (error) {
     siteStatus.isOnline = false;
+    console.log(`SiteStatus Error`, error);
     siteStatus.lastChecked = new Date().toISOString();
   }
 };
